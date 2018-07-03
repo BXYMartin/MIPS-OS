@@ -1,0 +1,233 @@
+16231086_2018_jac@ubuntu:~/16231086-lab$ tree
+.
+|-- Makefile
+|-- boot
+|   |-- Makefile
+|   |-- start.S
+|   `-- start.o
+|-- commit
+|-- drivers
+|   |-- Makefile
+|   `-- gxconsole
+|       |-- Makefile
+|       |-- console.c
+|       |-- console.o
+|       `-- dev_cons.h
+|-- files.txt
+|-- fs
+|   |-- Makefile
+|   |-- bintoc
+|   |-- fs.c
+|   |-- fs.h
+|   |-- fsformat
+|   |-- fsformat.backup
+|   |-- fsformat.c
+|   |-- fsformatbackup.c
+|   |-- ide.c
+|   |-- motd
+|   |-- newmotd
+|   |-- passwd
+|   |-- serv.b
+|   |-- serv.c
+|   |-- serv.x
+|   `-- test.c
+|-- gxemul
+|   |-- fs.img
+|   |-- fsformat
+|   |-- r3000
+|   |-- view
+|   `-- vmlinux
+|-- include
+|   |-- args.h
+|   |-- asm
+|   |   |-- asm.h
+|   |   |-- cp0regdef.h
+|   |   `-- regdef.h
+|   |-- asm-mips3k
+|   |   |-- asm.h
+|   |   |-- cp0regdef.h
+|   |   `-- regdef.h
+|   |-- env.h
+|   |-- error.h
+|   |-- fs.h
+|   |-- kclock.h
+|   |-- kerelf.h
+|   |-- mmu.h
+|   |-- pmap.h
+|   |-- print.h
+|   |-- printf.h
+|   |-- queue.h
+|   |-- sched.h
+|   |-- stackframe.h
+|   |-- trap.h
+|   |-- types.h
+|   `-- unistd.h
+|-- include.mk
+|-- init
+|   |-- Makefile
+|   |-- code.c
+|   |-- code.o
+|   |-- init.bk
+|   |-- init.c
+|   |-- init.o
+|   |-- main.c
+|   `-- main.o
+|-- lib
+|   |-- Makefile
+|   |-- env.c
+|   |-- env.o
+|   |-- env_asm.S
+|   |-- env_asm.o
+|   |-- genex.S
+|   |-- genex.o
+|   |-- getc.S
+|   |-- getc.o
+|   |-- kclock.c
+|   |-- kclock.o
+|   |-- kclock_asm.S
+|   |-- kclock_asm.o
+|   |-- kernel_elfloader.c
+|   |-- kernel_elfloader.o
+|   |-- print.c
+|   |-- print.o
+|   |-- printf.c
+|   |-- printf.o
+|   |-- sched.c
+|   |-- sched.o
+|   |-- syscall.S
+|   |-- syscall.o
+|   |-- syscall_all.c
+|   |-- syscall_all.o
+|   |-- traps.c
+|   `-- traps.o
+|-- mm
+|   |-- Makefile
+|   |-- pmap.all
+|   |-- pmap.c
+|   |-- pmap.o
+|   |-- tlb_asm.S
+|   `-- tlb_asm.o
+|-- test
+|   |-- cusobj
+|   |-- custom.txt
+|   |-- standard.txt
+|   `-- stdobj
+|-- tools
+|   |-- fsformat
+|   `-- scse0_3.lds
+`-- user
+    |-- 2
+    |-- Makefile
+    |-- bash.b
+    |-- bash.c
+    |-- bash.x
+    |-- bintoc
+    |-- cat.b
+    |-- cat.c
+    |-- cd.b
+    |-- cd.c
+    |-- cd.x
+    |-- checkdev.b
+    |-- checkdev.c
+    |-- checkdev.x
+    |-- console.c
+    |-- console.o
+    |-- cp.b
+    |-- cp.c
+    |-- cp.x
+    |-- entry.S
+    |-- entry.o
+    |-- fd.c
+    |-- fd.h
+    |-- fd.o
+    |-- file.c
+    |-- file.o
+    |-- fktest.b
+    |-- fktest.c
+    |-- fktest.x
+    |-- fork.c
+    |-- fork.o
+    |-- fprintf.c
+    |-- fprintf.o
+    |-- fsipc.c
+    |-- fsipc.o
+    |-- fstest.b
+    |-- fstest.c
+    |-- fstest.x
+    |-- icode.c
+    |-- icode.x
+    |-- idle.c
+    |-- idle.x
+    |-- init.b
+    |-- init.c
+    |-- ipc.c
+    |-- ipc.o
+    |-- lib.h
+    |-- libos.c
+    |-- libos.o
+    |-- login.b
+    |-- login.c
+    |-- login.x
+    |-- ls.b
+    |-- ls.c
+    |-- mkdir.b
+    |-- mkdir.c
+    |-- mkdir.x
+    |-- mkfile.b
+    |-- mkfile.c
+    |-- mkfile.x
+    |-- nano.b
+    |-- nano.c
+    |-- nano.x
+    |-- pageref.c
+    |-- pageref.o
+    |-- pgfault.c
+    |-- pgfault.o
+    |-- pingpong.b
+    |-- pingpong.c
+    |-- pingpong.x
+    |-- pipe.c
+    |-- pipe.o
+    |-- print.c
+    |-- print.o
+    |-- printf.c
+    |-- printf.o
+    |-- ps.b
+    |-- ps.c
+    |-- ps.x
+    |-- quit.b
+    |-- quit.c
+    |-- quit.x
+    |-- rm.b
+    |-- rm.c
+    |-- rm.x
+    |-- sh.b
+    |-- sh.c
+    |-- spawn.c
+    |-- spawn.o
+    |-- string.c
+    |-- string.o
+    |-- su.b
+    |-- su.c
+    |-- su.x
+    |-- syscall_lib.c
+    |-- syscall_lib.o
+    |-- syscall_wrap.S
+    |-- syscall_wrap.o
+    |-- term.b
+    |-- term.c
+    |-- term.x
+    |-- testarg.b
+    |-- testarg.c
+    |-- testpipe.c
+    |-- testpipe.x
+    |-- testpiperace.c
+    |-- testpiperace.x
+    |-- tree.b
+    |-- tree.c
+    |-- tree.x
+    |-- user.lds
+    |-- wait.c
+    `-- wait.o
+
+14 directories, 215 files
