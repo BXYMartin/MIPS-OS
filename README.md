@@ -3,7 +3,7 @@ An Custom Operating System with a Shell for MIPS R3000
 
 ## Customed readELF Version
 This project includes a customed readelf source code in order to load icode into memory properly.
-![image](https://github.com/BXYMartin/MIPS-OS/raw/master/Icode-Loader.png)
+![image](https://github.com/BXYMartin/MIPS-OS/blob/master/Icode-Loader.png)
 
 ## Memory Management
  Within `mm/pmap.c`, a self-mapping page table is implemented. Size per page is set to 4KB for the convenience of self-mapping. The map above is the key to the whole architecture.
