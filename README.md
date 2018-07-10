@@ -1,5 +1,5 @@
 # MIPS-OS
-A Custom Operating System with a Shell for MIPS R3000
+A Customed Operating System with a Shell for MIPS R3000
 
 ## Customed readELF Version
 This project includes a customed readelf source code in order to load icode into memory properly.
