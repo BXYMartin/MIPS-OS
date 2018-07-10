@@ -233,8 +233,14 @@ Illegal access will be denied.
 
 ## Fixing Bugs
 · Ignoring Segment `bss` in `spawn.c`
+
   Ported the code from the function `load-icode-mapper` to load icode into memory properly.
+  
 · Function `mkenvid` Creates an ID using Occupied ENV
+
   Make sure always assign a freed env struct to generate the id.
+  
 · Misleading Instruction for Redirection in `sh.c`
+
   Open the file first before `goto runit`.
+  
