@@ -47,10 +47,15 @@ This project includes a customed readelf source code in order to load icode into
  Within `mm/pmap.c`, a self-mapping page table is implemented. Size per page is set to 4KB for the convenience of self-mapping. The map above is the key to the whole architecture.
 
  Just like linux, the memory space is divided into 4 segments. For those above `0x80000000`, they are accessible only in kernel mode. The kseg0 memory space is a direct mapping for physical memory. The corresponding relationship of addresses is shown below for reference.  
+ 
 ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Addr-Translation.png)
- The MIPS architecture also treat different part of the memory differen
+
+ The MIPS architecture also treat different part of the memory differently, using cache or TLB mechanism.
+ 
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/MIPS-Architecture.png)
+ 
  To get a better understanding of `pmap.c`, I print the call-stack of the main function.
+ 
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Pmap-Callstack.png)
 
 ## Process Management
