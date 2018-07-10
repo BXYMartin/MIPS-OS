@@ -1,6 +1,6 @@
 # MIPS-OS
 
-<img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Booting.png" width="50%" />
+<img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Booting.png" width="40%" />
 
 A Customed Operating System with a Shell for MIPS R3000.
 
@@ -164,7 +164,21 @@ struct File {
 
 <img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Tree.png" width="70%" height="70%" />
 
-When creating the disk image, 
+When creating the disk image, each block is marked under the following rules:
+
+``` c++
+enum {
+    BLOCK_FREE  = 0,
+    BLOCK_BOOT  = 1,
+    BLOCK_BMAP  = 2,
+    BLOCK_SUPER = 3,
+    BLOCK_DATA  = 4,
+    BLOCK_FILE  = 5,
+    BLOCK_INDEX = 6,
+};
+```
+
+So the disk status can be shown below.
 
 <img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Bitmap.png" width="50%" />
 
