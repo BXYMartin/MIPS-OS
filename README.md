@@ -89,9 +89,11 @@ In this Operating System, I implemented a double queue job scheduling. For those
 
 ### Spawn Processes using `Fork`
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Fork.png)
+ 
  After fork, child process return `0` while father process return non-zero to distinguish processes being forked.
  
  Before fork, the page fault handler for father process must be set properly. IF NOT, when spawning the child process, things might go wrong following the picture below.
+ 
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Crucial-Order.png)
  
 ## Interrupts and Exceptions
@@ -149,19 +151,49 @@ struct File {
  The union member f_pad is used to align the size of the struct to size `BY2FILE`. Inherited from the original code, I added `u_char f_perm` to indicate the file's permission for different user groups.
 
 ### Address Space
- In this OS, file service is a separate process that is blocked until a request arrives. Therefore the address space through different processes is a little tricky.`
+ In this OS, file service is a separate process that is blocked until a request arrives. Therefore the address space through different processes is a little tricky.
+ 
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Address-Mapping.png)
 
-## Pipe and Shell
+## Pipe
  Apart from IPC System Call, processes can also communicate through pipe. The pipe is actually a shared memory slice through different env page table.
+ 
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Pipe.png)
+ 
  The pipe is marked using `struct fd` - File Descriptor. 
  
  Using the `fd` struct, the pipe can handle read and write simutaneously. It can be used to assist the communication between serve processes and normal user processes.
+ 
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Addr-Space.png)
+ 
  To determine the correct status of the pipe, the OS uses the ref count of the corresponding page to check whether this pipe needs closing. The ref count for the file descriptor is always no greater than that of the pipe, when there equality is satisfied, this pipe is need to be closed.
+ 
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Serve-Step.png)
  
- 
+## Shell
+The shell provides a interface for user to interact with OS. This OS uses `icode.b` as the launcher to launch `sh.b` and all other periperal user management processes.
+
+Also, some works on mapping of certain function keys such as `left` and `right` direction keys, `TAB` auto-fill and history recordings are also implemented to simulate the linux terminal.
+
+Apart from normal input, ANSI color mode is also supported using macro definitions below.
+``` c++
+/* Define color modes */
+#define RED(str) "\033[0;32;31m" # str "\033[m"
+#define LIGHT_RED(str) "\033[1;31m" # str "\033[m"
+#define GREEN(str) "\033[0;32;32m" # str "\033[m"
+#define LIGHT_GREEN(str) "\033[1;32m" # str "\033[m"
+#define BLUE(str) "\033[0;32;34m" # str "\033[m"
+#define LIGHT_BLUE(str) "\033[1;34m" # str "\033[m"
+#define DARK_GRAY(str) "\033[1;30m" # str "\033[m"
+#define CYAN(str) "\033[0;36m" # str "\033[m"
+#define LIGHT_CYAN(str) "\033[1;36m" # str "\033[m"
+#define PURPLE(str) "\033[0;35m" # str "\033[m"
+#define LIGHT_PURPLE(str) "\033[1;35m" # str "\033[m"
+#define BROWN(str) "\033[0;33m" # str "\033[m"
+#define YELLOW(str) "\033[1;33m" # str "\033[m"
+#define LIGHT_GRAY(str) "\033[0;37m" # str "\033[m"
+#define WHITE(str) "\033[1;37m" # str "\033[m"
+```
+
 ## User and Permission (Partly Implemented)
 Use linux's solution for reference, add a file named `fs/passwd` to store the necessary information for Users. Also, in struct file, there exist a 9-bit permission bit like "rwxr-xr--" to show the permission for 3 user groups.
