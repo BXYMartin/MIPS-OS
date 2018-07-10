@@ -1,5 +1,5 @@
 # MIPS-OS
-An Custom Operating System with a Shell for MIPS R3000
+A Custom Operating System with a Shell for MIPS R3000
 
 ## Customed readELF Version
 This project includes a customed readelf source code in order to load icode into memory properly.
@@ -156,7 +156,7 @@ struct File {
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Address-Mapping.png)
 
 ## Pipe
- Apart from IPC System Call, processes can also communicate through pipe. The pipe is actually a shared memory slice through different env page table.
+ Apart from IPC System Call, processes can also communicate through pipe. The pipe is actually a shared memory slice through different env page tables.
  
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Pipe.png)
  
