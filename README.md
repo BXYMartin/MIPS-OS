@@ -230,3 +230,11 @@ Use linux's solution for reference, add a file named `fs/passwd` to store the ne
 Illegal access will be denied.
 
 <img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Perm.png" width="40%" />
+
+## Fixing Bugs
+· Ignoring Segment `bss` in `spawn.c`
+  Ported the code from the function `load-icode-mapper` to load icode into memory properly.
+· Function `mkenvid` Creates an ID using Occupied ENV
+  Make sure always assign a freed env struct to generate the id.
+· Misleading Instruction for Redirection in `sh.c`
+  Open the file first before `goto runit`.
