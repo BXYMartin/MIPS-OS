@@ -1,5 +1,6 @@
 # MIPS-OS
 A Customed Operating System with a Shell for MIPS R3000
+<img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Booting.png" width="70%" height="70%" />
 
 ## Customed readELF Version
 This project includes a customed readelf source code in order to load icode into memory properly.
@@ -154,17 +155,26 @@ struct File {
  In this OS, file service is a separate process that is blocked until a request arrives. Therefore the address space through different processes is a little tricky.
  
  ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Address-Mapping.png)
+ 
+### Status
+
+ Implemented certain command to visualize the disk status and file system status.
+
+<img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Tree.png" width="70%" height="70%" />
+
+
+<img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Bitmap.png" width="70%" height="70%" />
 
 ## Pipe
  Apart from IPC System Call, processes can also communicate through pipe. The pipe is actually a shared memory slice through different env page tables.
  
- ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Pipe.png)
+ <img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Pipe.png" width="70%" height="70%" />
  
  The pipe is marked using `struct fd` - File Descriptor. 
  
  Using the `fd` struct, the pipe can handle read and write simutaneously. It can be used to assist the communication between serve processes and normal user processes.
  
- ![image](https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Addr-Space.png)
+ <img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Ref-Count.png" width="70%" height="70%" />
  
  To determine the correct status of the pipe, the OS uses the ref count of the corresponding page to check whether this pipe needs closing. The ref count for the file descriptor is always no greater than that of the pipe, when there equality is satisfied, this pipe is need to be closed.
  
@@ -174,6 +184,8 @@ struct File {
 The shell provides a interface for user to interact with OS. This OS uses `icode.b` as the launcher to launch `sh.b` and all other periperal user management processes.
 
 Also, some works on mapping of certain function keys such as `left` and `right` direction keys, `TAB` auto-fill and history recordings are also implemented to simulate the linux terminal.
+
+<img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Autofill.png" width="70%" height="70%" />
 
 Apart from normal input, ANSI color mode is also supported using macro definitions below.
 ``` c++
@@ -195,5 +207,13 @@ Apart from normal input, ANSI color mode is also supported using macro definitio
 #define WHITE(str) "\033[1;37m" # str "\033[m"
 ```
 
+<img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Enter.png" width="70%" height="70%" />
+
 ## User and Permission (Partly Implemented)
 Use linux's solution for reference, add a file named `fs/passwd` to store the necessary information for Users. Also, in struct file, there exist a 9-bit permission bit like "rwxr-xr--" to show the permission for 3 user groups.
+
+<img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/User.png" width="70%" height="70%" />
+
+Illegal access will be denied.
+
+<img src="https://github.com/BXYMartin/MIPS-OS/blob/master/imgs/Perm.png" width="70%" height="70%" />
